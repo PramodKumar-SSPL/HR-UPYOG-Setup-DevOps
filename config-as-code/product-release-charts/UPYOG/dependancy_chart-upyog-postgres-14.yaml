@@ -1,0 +1,95 @@
+version: postgres-14 (for postgres version 14 and above)
+modules:
+    - name: backbone
+      services:
+        - zookeeper-v2:5.4.1
+        - kafka-v2:5.4.1
+        - kafka-connect:5.4.1
+        - kafka-connect-restart-tasks
+        - elasticsearch-data-v1
+        - elasticsearch-master-v1
+        - kibana-v1
+    - name: authn-authz
+      services:
+        - redis
+        - ingress-nginx
+        - cert-manager
+    - name: core
+      dependencies:
+        - "backbone"
+        - "authn-authz"    
+      services:
+        - upyogio/egov-accesscontrol:migration-issue-5b8e3b8b64-13
+        - upyogio/egov-enc-service:migration-issue-e8fc28c60d-14
+        - upyogio/egov-filestore:migration-issue-ced6591191-12
+        - upyogio/egov-idgen:migration-issue-658ac2b590-10
+        - upyogio/egov-indexer:migration-issue-eaed745a31-23
+        - upyogio/egov-localization:migration-issue-2d57cd0df7-10
+        - upyogio/egov-location-db:migration-issue-7d4d13c6f7-17
+        - upyogio/egov-mdms-service:dev-dc9ffb98f8-6
+        - upyogio/egov-notification-mail:v1.1.3-64da31c86e-4
+        - upyogio/egov-notification-sms:v1.1.4-7bbec00d43-15
+        - upyogio/egov-otp:migration-issue-42534ec83f-7
+        - upyogio/egov-persister:v1.1.5-64da31c86e-17
+        - upyogio/egov-pg-service:migration-issue-cfdbca9528-46
+        - upyogio/egov-searcher:v1.1.6-64da31c86e-95
+        - upyogio/egov-url-shortening:migration-issue-41c7e22cd5-6
+        - upyogio/egov-user:migration-issue-b15fc14945-55
+        - upyogio/user-otp:v1.1.6-64da31c86e-2
+        - upyogio/egov-workflow-v2:migration-issue-8fb2b3c7a2-40
+        - upyogio/pdf-service:migration-issue-cd93bc6a8c-31
+        - upyogio/report:v1.3.6-13739443aa-16
+        - upyogio/playground:1.0
+        - upyogio/mdms-v2:migration-issue-04fcd4d23d-5
+    - name: business
+      dependencies:
+        - "core"
+      services:
+        - upyogio/collection-services:migration-issue-71d22ddc02-13
+        - upyogio/billing-service:migration-issue-8492cbd5da-31
+        - upyogio/egf-instrument:migration-issue-e0ff42610f-9
+        - upyogio/egf-master:migration-issue-b76a92408f-8
+        - upyogio/egov-apportion-service:migration-issue-4301ee1509-8
+        - upyogio/egov-hrms:migration-issue-b9d956bc52-13
+        - upyogio/finance-collections-voucher-consumer:migration-issue-5372e604ad-8
+    - name: utilities
+      dependencies:
+        - "core"
+      services:
+        - upyogio/egov-custom-consumer:2.8-02737c2864-2
+        - upyogio/egov-pdf:v1.2.1-13739443aa-39
+    - name: "frontend"             
+      dependencies:
+        - "business"
+      services:
+        - upyogio/citizen:v1.10.0-beta-3f2fe9abc7-10
+        - upyogio/employee:v1.10.0-beta-3f2fe9abc7-17
+        - upyogio/digit-ui:v1.7.0-beta.2-cf0dafd7b8-405  
+        - upyogio/workbench-ui:v1.8.0-6c9d1e4353-30
+    - name: m_pgr             #PGR
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - upyogio/pgr-services:migration-issue-eee8ee5628-38
+        - upyogio/citizen:v1.10.0-beta-3f2fe9abc7-10
+        - upyogio/employee:v1.10.0-beta-3f2fe9abc7-17
+        - upyogio/digit-ui:v1.7.0-beta.2-cf0dafd7b8-405
+        - upyogio/zuul-kubernetes-discovery:vNA-452b00d9de-4
+    - name: m_property-tax    #PT
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - upyogio/property-services:v1.2.2-ee21fcd52a-92
+        - upyogio/pt-calculator-v2:migration-issue-491e2d8a74-38
+        - upyogio/pt-services-v2:migration-issue-6becd136fd-14
+        - upyogio/zuul:v1.3.2-3f038e780d-16
+    - name: m_trade-license    #TL
+      dependencies:
+          - "core"
+          - "business"
+      services:
+        - upyogio/tl-calculator:migration-issue-c6eba265a4-15
+        - upyogio/tl-services:v1.1.9-462c24adb1-42   
+        - upyogio/zuul:v1.3.2-3f038e780d-16

@@ -1,0 +1,95 @@
+version: v2.1
+modules:
+    - name: backbone
+      services:
+        - zookeeper-v2:5.4.1
+        - kafka-v2:5.4.1
+        - kafka-connect:5.4.1
+        - kafka-connect-restart-tasks
+        - elasticsearch-data-v1
+        - elasticsearch-master-v1
+        - kibana-v1
+    - name: authn-authz
+      services:
+        - redis
+        - ingress-nginx
+        - cert-manager
+    - name: core
+      dependencies:
+        - "backbone"
+        - "authn-authz"    
+      services:
+        - upyogio/egov-accesscontrol:v1.1.4-64da31c86e-6
+        - upyogio/egov-enc-service:v1.1.4-64da31c86e-5
+        - upyogio/egov-filestore:v1.2.5-64da31c86e-4
+        - upyogio/egov-idgen:v1.2.4-64da31c86e-5
+        - upyogio/egov-indexer:v1.1.8-64da31c86e-6
+        - upyogio/egov-localization:v1.1.4-64da31c86e-4
+        - upyogio/egov-location:v1.1.5-2fa4dd1333-10
+        - upyogio/egov-mdms-service:v1.3.3-64da31c86e-7
+        - upyogio/egov-notification-mail:v1.1.3-64da31c86e-4
+        - upyogio/egov-notification-sms:v1.1.4-7bbec00d43-15
+        - upyogio/egov-otp:v1.2.3-64da31c86e-3
+        - upyogio/egov-persister:v1.1.5-64da31c86e-9
+        - upyogio/egov-pg-service:v1.2.4-2fa4dd1333-39
+        - upyogio/egov-searcher:v1.1.6-64da31c86e-5
+        - upyogio/egov-url-shortening:v1.1.3-64da31c86e-4
+        - upyogio/egov-user:v1.3.0-d4c8608c57-37
+        - upyogio/user-otp:v1.1.6-64da31c86e-4
+        - upyogio/egov-workflow-v2:v1.2.2-ed4fe46f5c-5
+        - upyogio/pdf-service:v1.2.1-2fa4dd1333-21
+        - upyogio/report:v1.3.5-2fa4dd1333-6
+        - upyogio/playground:1.0
+        - egovsb/mdms-v2-db:v1.3.2-04e9ef54f6-3 #Replace this image with prodction version mdms v2 image
+    - name: business
+      dependencies:
+        - "core"
+      services:
+        - upyogio/collection-services:v1.1.7-e42769a235-8
+        - upyogio/billing-service:v1.3.5-2fa4dd1333-14
+        - upyogio/egf-instrument:v1.1.4-02737c2864-6
+        - upyogio/egf-master:v1.1.3-64da31c86e-6
+        - upyogio/egov-apportion-service:v1.1.5-64da31c86e-6
+        - upyogio/egov-hrms:v1.2.5-64da31c86e-5
+        - upyogio/finance-collections-voucher-consumer:v1.1.6-64da31c86e-7
+    - name: utilities
+      dependencies:
+        - "core"
+      services:
+        - upyogio/egov-custom-consumer:v1.1.1-72f8a8f87b-3
+        - upyogio/egov-pdf:v1.2.0-2fa4dd1333-35
+    - name: "frontend"             
+      dependencies:
+        - "business"
+      services:
+        - upyogio/citizen:v1.10.0-beta-3f2fe9abc7-10
+        - upyogio/employee:v1.10.0-beta-3f2fe9abc7-17
+        - upyogio/digit-ui:v1.7.0-beta.2-cf0dafd7b8-405  
+        - egovsb/workbench-ui:workbench-latest-changes-6c9d1e4353-13 #Replace this image with prodction version workbench UI image
+    - name: m_pgr             #PGR
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - upyogio/pgr-services:v1.1.7-2fa4dd1333-15
+        - upyogio/citizen:v1.10.0-beta-3f2fe9abc7-10
+        - upyogio/employee:v1.10.0-beta-3f2fe9abc7-17
+        - upyogio/digit-ui:v1.7.0-beta.2-cf0dafd7b8-405
+        - upyogio/zuul:master-030523-3bec05ca71-8
+    - name: m_property-tax    #PT
+      dependencies:
+        - "core"
+        - "business"
+      services:
+        - upyogio/property-services:v1.2.1-7cf1e0e1e3-59
+        - upyogio/pt-calculator-v2:v1.1.5_beta-88379920df-33
+        - upyogio/pt-services-v2:v1.0.0-1a3c54d970-8
+        - upyogio/zuul:master-030523-3bec05ca71-8
+    - name: m_trade-license    #TL
+      dependencies:
+          - "core"
+          - "business"
+      services:
+        - upyogio/tl-calculator:v1.1.5-64da31c86e-6
+        - upyogio/tl-services:v1.1.8-64da31c86e-7   
+        - upyogio/zuul:master-030523-3bec05ca71-8
