@@ -1,0 +1,3 @@
+[submodule "infra-as-code/terraform/egov-cicd/.terraform/modules/eks"]
+	path = infra-as-code/terraform/egov-cicd/.terraform/modules/eks
+	url = https://github.com/SSPL-UPYOG-Haryana/HR-UPYOG-Setup-DevOps.git
