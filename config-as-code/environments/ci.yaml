@@ -37,7 +37,7 @@ jenkins:
     - name: qa
       acl: [SSPL-UPYOG-Haryana*HR-Finance]
 
-  main:
+  master:
     ingress:
       enabled: true
     resources:
