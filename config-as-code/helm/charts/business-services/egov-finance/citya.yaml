@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx","nginx.ingress.kubernetes.io/rewrite-target":"/services","nginx.ingress.kubernetes.io/use-regex":"true"},"labels":{"app":"citya-finance"},"name":"citya-finance","namespace":"egov"},"spec":{"rules":[{"host":"citya-digit.sparrowsoftech.in","http":{"paths":[{"backend":{"service":{"name":"citya-finance","port":{"number":8080}}},"path":"/services","pathType":"Prefix"}]}}],"tls":[{"hosts":["citya-digit.sparrowsoftech.in"],"secretName":"citya-digit.sparrowsoftech.in-tls-certs"}]}}
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /services
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  creationTimestamp: "2025-02-15T09:27:40Z"
+  generation: 3
+  labels:
+    app: citya-finance
+  name: citya-finance
+  namespace: egov
+  resourceVersion: "4006173"
+  uid: aa3abc57-255a-469d-9996-0b5b88321c2f
+spec:
+  rules:
+  - host: citya-digit.sparrowsoftech.in
+    http:
+      paths:
+      - backend:
+          service:
+            name: egov-finance
+            port:
+              number: 8080
+        path: /services
+        pathType: Prefix
+  tls:
+  - hosts:
+    - citya-digit.sparrowsoftech.in
+    secretName: citya-digit.sparrowsoftech.in-tls-certs
+status:
+  loadBalancer:
+    ingress:
+    - hostname: a53804a95820d43748c364d9c6df0ec3-2099047981.ap-south-1.elb.amazonaws.com
