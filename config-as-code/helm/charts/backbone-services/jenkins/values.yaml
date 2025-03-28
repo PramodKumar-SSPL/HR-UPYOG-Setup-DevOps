@@ -404,7 +404,7 @@ master:
         unclassified:
           globalLibraries:
             libraries:
-            - defaultVersion: "master"
+            - defaultVersion: "main"
               name: "ci-libs"
               retriever:
                 modernSCM:
@@ -416,7 +416,7 @@ master:
                       - "gitBranchDiscovery"
       system-message: | 
         jenkins:                                
-          systemMessage: "Welcome to Sparrow Softech Pvt Ltd CI/CD server. This Jenkins is configured and managed as code."    
+          systemMessage: "Welcome to Haryana CI/CD server. This Jenkins is configured and managed as code."    
 
       git-credentials: | 
         credentials:
@@ -476,7 +476,7 @@ master:
                   cps {
                       script("""library 'ci-libs'
               {{- if (eq $job.name "central-instance") }}            
-              deployer(repo:'git@github.com:SSPL-UPYOG-Haryana/HR-UPYOG-Setup-DevOps.git', branch: 'main', helmDir: 'config-as-code/helm', environment: '{{ $job.name }}')""")
+              deployer(repo:'git@github.com:egovernments/DIGIT-DevOps.git', branch: 'central-instance', helmDir: 'config-as-code/helm', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
