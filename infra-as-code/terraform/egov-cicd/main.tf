@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "hr-cicd-terraform"
+    bucket = "hrcicd-terraform"
     key = "terraform"
     region = "ap-south-1"
   }

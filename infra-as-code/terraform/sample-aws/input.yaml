@@ -1,13 +1,13 @@
 # Replace with the name which you want to give to your EKS cluster
 # Cluster name can have only lowercase alphanumeric characters and hyphens
 # For example: "upyog-demo"
-cluster_name: "hr-dev"
+cluster_name: "hrupyog"
 
 # Replace with ssh key name you want
-ssh_key_name: "hr-ssh-key"
+ssh_key_name: "hrupyog-ssh-key"
 
 # Replace with public key which you want to add in your EC2 machines # ssh key which you want to add in your EC2 machines
-public_ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKsysaNd9AKsZYausLVODHClXyDkEfNjSkWcY77CIac7MkfE48slQT8UaCcHBCF/P4/t/2Lrss6xmvj9Jds1v7fX6RPUonem7v6yzpnIPpUDKkNcf+/25Ti70utx7Cp2pDFeONO8MdvgY48CwIaq9zf7GE8/awsOdX7uMeKDtTr1DIUdowr0totBmT8uU9FPAUjw3vT9wKZPVJlvgF40HtN6kcuEJQcViwd/DumQ/6PMg4HFpJdcQgD9P7kQ2NXlHlb98Rr1OahcL4r0GKg2XdIeF+v0OySWqfWkZ2wTW7OTFcQxkgLxvDSxp8sQcsHcJHxz1SywwoF31Rgu570TSD"
+public_ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJrMgRkZlTEI2pIhWjC6Xe6eWR8tP+GWn7s8s23fh4MKnRtw3wJV5Gb8GP4FNirFl0rR0m36ERzUuGLIkb4iG+tl9eVIX3UXMY4cq3KU5dOBz77l/0OyzjFeQKDwvQzwHsuANaulJoWnlAQE4jdTn5VoeNtObAriZVs55vwi3EOYxv26SE8aOufmrNWzy5u7K/ZQqad1sQQDWc9945BohNO4h3eQStDD37uUBSbrAPCNeq2bvMxQEzD0FnMkLo51woIQfPbHnU6Cy18siHQs7Iz9+uKBmyiMlhI1svfMA/dSDHy2UusdmT4KHvstbsxQRoOHXhu5+NibrVruumBWwr"
 
 # Name you want to give to your Database
 # DB name must contain only alphanumeric characters
@@ -15,12 +15,12 @@ db_name: "hrfinance"
 
 # Replace with DB username you want
 # DB user name must contain only alphanumeric characters
-db_username: "test"
+db_username: "hrupyog"
 
 # Replace with Domain name you want for your web applications
-domain_name: "digit.sparrowsoftech.in"
+domain_name: "dev.hrupyog.sparrowsoftech.in"
 
 # Replace with the name you want to give to your S3 bucket which is used to store the terraform state
-terraform_state_bucket_name: "hr-finance-terraform"
+terraform_state_bucket_name: "hrfinance-terraform"
 
 

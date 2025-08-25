@@ -28,15 +28,7 @@ spec:
       limits:
         memory: "256Mi"
         cpu: "200m"  
-  volumes:
-  - name: service-account
-    projected:
-      sources:
-      - secret:
-          name: jenkins-credentials
-          items:
-            - key: gcpKmsServiceAccount
-              path: service-account.json   
+  volumes: 
   - name: kube-config
     secret:
         secretName: "${pipelineParams.environment}-kube-config"                    

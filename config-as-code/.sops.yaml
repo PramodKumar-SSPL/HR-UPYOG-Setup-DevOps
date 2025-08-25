@@ -4,8 +4,8 @@ creation_rules:
         # KMS set A is used
         # eGOV Internal ------------------------------------------------------------------------------------------------------------- #
         - path_regex: environments/qa\-secrets\.yaml$
-          kms: 'arn:aws:kms:ap-south-1:140023388621:key/5541104b-8f19-4ec7-9ac0-4bc82dce6a7d'
+          kms: 'arn:aws:kms:ap-south-1:372405506480:key/e71e6d2d-d34c-48bc-ac2a-6d8560638ff5'
         - path_regex: environments/ci\-secrets\.yaml$
-          kms: 'arn:aws:kms:ap-south-1:140023388621:key/96184e49-3332-44e0-b4cc-2ce38457b17b'
+          kms: 'arn:aws:kms:ap-south-1:372405506480:key/969218a8-1fa3-4d50-8e06-24b35b44cb7f'
       
   
