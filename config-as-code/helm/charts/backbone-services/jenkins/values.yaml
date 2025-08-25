@@ -404,7 +404,7 @@ master:
         unclassified:
           globalLibraries:
             libraries:
-            - defaultVersion: "main"
+            - defaultVersion: "master"
               name: "ci-libs"
               retriever:
                 modernSCM:
@@ -490,7 +490,7 @@ master:
                 disabled(false)
               }
               {{- else }}
-              deployer(repo:'git@github.com:SSPL-UPYOG-Haryana/HR-UPYOG-Setup-DevOps.git', branch: 'main', helmDir: 'config-as-code/helm', environment: '{{ $job.name }}')""")
+              deployer(repo:'git@github.com:SSPL-UPYOG-Haryana/HR-UPYOG-Setup-DevOps.git', branch: 'master', helmDir: 'config-as-code', environment: '{{ $job.name }}')""")
                       sandbox() 
                     }
                 }
