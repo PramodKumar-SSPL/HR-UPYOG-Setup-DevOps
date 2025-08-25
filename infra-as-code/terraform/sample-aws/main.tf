@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket = "hr-finance-terraform"
+    bucket = "hrfinance-terraform"
     key    = "digit-bootcamp-setup/terraform.tfstate"
     region = "ap-south-1"
     # The below line is optional depending on whether you are using DynamoDB for state locking and consistency
-    dynamodb_table = "hr-finance-terraform"
+    dynamodb_table = "hrfinance-terraform"
     # The below line is optional if your S3 bucket is encrypted
     encrypt = true
   }
@@ -24,7 +24,7 @@ module "db" {
   vpc_security_group_ids        = ["${module.network.rds_db_sg_id}"]
   availability_zone             = "${element(var.availability_zones, 0)}"
   instance_class                = "db.t3.medium"  ## postgres db instance type
-  engine_version                = "11.22"   ## postgres version
+  engine_version                = "14.17"   ## postgres version
   storage_type                  = "gp2"
   storage_gb                    = "10"     ## postgres disk size
   backup_retention_days         = "7"
@@ -70,8 +70,8 @@ module "eks" {
       subnets                 = "${slice(module.network.private_subnets, 0, length(var.availability_zones))}"
       instance_type           = "${var.instance_type}"
 #      override_instance_types = "${var.override_instance_types}"
-      asg_max_size            = 1
-      asg_desired_capacity    = 1
+      asg_max_size            = 4
+      asg_desired_capacity    = 4
       kubelet_extra_args      = "--node-labels=node.kubernetes.io/lifecycle=spot"
 #      additional_security_group_ids = ["${module.network.worker_nodes_sg_id}"]
       spot_allocation_strategy= "capacity-optimized"
@@ -170,17 +170,17 @@ resource "aws_security_group_rule" "rds_db_ingress_workers" {
 resource "aws_eks_addon" "kube_proxy" {
   cluster_name      = data.aws_eks_cluster.cluster.name
   addon_name        = "kube-proxy"
-  resolve_conflicts = "OVERWRITE"
+  #resolve_conflicts = "OVERWRITE"
 }
 resource "aws_eks_addon" "core_dns" {
   cluster_name      = data.aws_eks_cluster.cluster.name
   addon_name        = "coredns"
-  resolve_conflicts = "OVERWRITE"
+  #resolve_conflicts = "OVERWRITE"
 }
 resource "aws_eks_addon" "aws_ebs_csi_driver" {
   cluster_name      = data.aws_eks_cluster.cluster.name
   addon_name        = "aws-ebs-csi-driver"  
-  resolve_conflicts = "OVERWRITE"
+  #resolve_conflicts = "OVERWRITE"
 }
 
 module "es-master" {

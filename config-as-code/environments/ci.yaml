@@ -1,5 +1,5 @@
 global:
-  domain: digit-cicd.sparrowsoftech.in ## Add your Domain Name Eg: site.mydomain.com
+  domain: hrupyog-cicd.sparrowsoftech.in ## Add your Domain Name Eg: site.mydomain.com
   setup: fullsetup
 
 cluster-configs:
@@ -71,6 +71,6 @@ cluster-autoscaler:
   cloudProvider: aws
   awsRegion: ap-south-1
   autoDiscovery:
-    clusterName: sspl-cicd # Add cluster name
+    clusterName: hrupyog-cicd # Add cluster name
     tags:
-    - kubernetes.io/cluster/sspl-cicd # Add cluster name
+    - kubernetes.io/cluster/hrupyog-cicd # Add cluster name

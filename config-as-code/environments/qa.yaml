@@ -1,7 +1,7 @@
 global:
-   domain: digit.sparrowsoftech.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: dev.hrupyog.sparrowsoftech.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
-   containerRegistry: sparrowsoftech
+   containerRegistry: hrupyog
 
 cluster-configs:
     namespaces:
@@ -14,13 +14,13 @@ cluster-configs:
         egov-config:
             namespace: [ egov, monitoring ]
             data:
-                db-host: 43.239.78.2:5432 ## Add db-host name eg: upyog-demo.database.azure.com
-                db-name: sspl_db ## Add db-name
-                db-url: jdbc:postgresql://43.239.78.2:5432/sspl_db ## example: jdbc:postgresql://upyog-demo.postgres.database.azure.com:5432/egov_demo
-                erp-db-url: jdbc:postgresql://43.239.78.2:5432/finance-sspl_db
-                domain: digit.sparrowsoftech.in ## Add your Domain Name    
-                egov-services-fqdn-name: https://digit.sparrowsoftech.in/ ## Add your Domain Name
-                egov-state-level-tenant-id: "pg"
+                db-host: hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com #43.239.78.2:5432 ## Add db-host name eg: upyog-demo.database.azure.com
+                db-name: hrupyog ## Add db-name
+                db-url: jdbc:postgresql://hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com:5432/hrfinance ## example: jdbc:postgresql://upyog-demo.postgres.database.azure.com:5432/egov_demo
+                erp-db-url: jdbc:postgresql://hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com:5432/finance-sspl_db
+                domain: dev.hrupyog.sparrowsoftech.in ## Add your Domain Name    
+                egov-services-fqdn-name: https://dev.hrupyog.sparrowsoftech.in/ ## Add your Domain Name
+                egov-state-level-tenant-id: "hr"
                 s3-assets-bucket: "(pg-egov-assets|egov-playground-assets)"
                 es-host: "elasticsearch-data-v1.es-cluster"
                 es-indexer-host: "http://elasticsearch-data-v1.es-cluster:9200/"
@@ -38,8 +38,8 @@ cluster-configs:
                 spring-jpa-show-sql: "true"
                 timezone: Asia/Kolkata
                 tracer-errors-provideexceptionindetails: "true"
-                egov-bnd-freedownload-tenants: "pg.testing"
-                egov-bnd-live-citizen-tenants: "pg.testing"
+                egov-bnd-freedownload-tenants: "hr.testing"
+                egov-bnd-live-citizen-tenants: "hr.testing"
 
         egov-service-host:
             namespace: [ egov, monitoring ]
@@ -184,8 +184,8 @@ pgadmin:
     - egovio/pgadmin:v0.1
 
 pgadmin-config:
-  host: "43.239.78.2"
-  db-admin-username: "sspl"
+  host: "hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com"
+  db-admin-username: "hrupyog"
   db-read-username: "pbprod_readonly"
   port: "5432"
   env: "PBPROD"
@@ -211,7 +211,7 @@ egov-filestore:
   allowed-file-formats-map: "{jpg:{'image/jpg','image/jpeg'},jpeg:{'image/jpeg','image/jpg'},png:{'image/png'},pdf:{'application/pdf'},odt:{'application/vnd.oasis.opendocument.text'},ods:{'application/vnd.oasis.opendocument.spreadsheet'},docx:{'application/x-tika-msoffice','application/x-tika-ooxml','application/vnd.oasis.opendocument.text','application/msword'},doc:{'application/x-tika-msoffice','application/x-tika-ooxml','application/vnd.oasis.opendocument.text','application/msword'},dxf:{'text/plain','application/dxf','application/octet-stream','image/vnd.dxf','image/vnd.dxf; format=ascii','image/vnd.dxf; format=binary','image/vnd.dxb'},csv:{'text/plain'},txt:{'text/plain'},xlsx:{'application/x-tika-ooxml','application/x-tika-msoffice','application/vnd.ms-excel'},xls:{'application/x-tika-ooxml','application/x-tika-msoffice','application/vnd.ms-excel'}}"
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
   filestore-url-validity: 3600
-  fixed-bucketname: hr-finance-filestore  ## Add filestore bucket name
+  fixed-bucketname: hrfinance-filestore  ## Add filestore bucket name
 
 egov-idgen:
   idformat-from-mdms: "true"
@@ -314,7 +314,7 @@ egov-mdms-service:
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-mdms-data"   ##### Change repo url with Your fork Repo url
-      branch: "main"                                        ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                        ##### Change repo branch with Your fork Repo branch
   mdms-folder: "HR-upyog-mdms-data"
   masters-config-url: "file:///work-dir/HR-upyog-mdms-data/master-config.json"
   java-args: -Dspring.profiles.active=monitoring
@@ -325,7 +325,7 @@ egov-indexer:
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"        ##### Change repo url with Your fork Repo url
-      branch: "main"                                      ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                      ##### Change repo branch with Your fork Repo branch
   egov-indexer-yaml-repo-path: "file:///work-dir/HR-upyog-configs/configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/collection-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/error-queue.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/payment-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/HR-upyog-configs/configs/egov-indexer/chatbot-telemetry.yaml"
 
 egov-persister:
@@ -336,7 +336,7 @@ egov-persister:
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"      ##### Change repo url with Your fork Repo url
-      branch: "main"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
 
 pgr-services:
   memory_limits: 512Mi
@@ -345,28 +345,28 @@ egov-data-uploader:
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"      ##### Change repo url with Your fork Repo url
-      branch: "main"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
   search-yaml-path: "file:///work-dir/HR-upyog-configs/configs/egov-searcher/rainmaker-pgr-v2.yml,file:///work-dir/HR-upyog-configs/configs/egov-searcher/weekly-impact-emailer-searcher.yml,file:///work-dir/HR-upyog-configs/configs/egov-searcher/PTDemandBasedSearcher.yml,file:///work-dir/HR-upyog-configs/configs/egov-searcher/bill-genie.yml,file:///work-dir/HR-upyog-configs/configs/egov-searcher/rainmaker-tl.yml,file:///work-dir/HR-upyog-configs/configs/egov-searcher/localitySearcher.yml"
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"     ##### Change repo url with Your fork Repo url
-      branch: "main"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-analytics:
   config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"      ##### Change repo url with Your fork Repo url
-      branch: "main"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
 
 dashboard-ingest:
   config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"      ##### Change repo url with Your fork Repo url
-      branch: "main"                                    ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -387,14 +387,14 @@ report:
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"     ##### Change repo url with Your fork Repo url
-      branch: "main"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
   report-locationsfile-path: "file:///work-dir/HR-upyog-configs/configs/reports/reportFileLocationsv1.txt"
 
 pdf-service:
   initContainers:
     gitSync:
       repo: "git@github.com:SSPL-UPYOG-Haryana/HR-upyog-configs"     ##### Change repo url with Your fork Repo url
-      branch: "main"                                   ##### Change repo branch with Your fork Repo branch
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
   data-config-urls: "file:///work-dir/configs/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-bill.json,file:///work-dir/configs/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/data-config/pt-receipt.json,file:///work-dir/configs/pdf-service/data-config/tl-receipt.json,file:///work-dir/configs/pdf-service/data-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/data-config/tlapplication.json,file:///work-dir/configs/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit.json,file:///work-dir/configs/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/data-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/data-config/misc-receipt.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/data-config/tlcertificate.json"
   format-config-urls: "file:///work-dir/configs/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-bill.json,file:///work-dir/configs/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/format-config/pt-receipt.json,file:///work-dir/configs/pdf-service/format-config/tl-receipt.json,file:///work-dir/configs/pdf-service/format-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/format-config/tlapplication.json,file:///work-dir/configs/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit.json,file:///work-dir/configs/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/format-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/format-config/misc-receipt.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/format-config/tlcertificate.json"
 
@@ -505,7 +505,7 @@ collection-receipt-voucher-consumer:
   zirakpur-erp-host: "https://zirakpur-qa.egovernments.org/"
 
 finance-collections-voucher-consumer:
-  erp-env-name: "digit"
+  erp-env-name: "dev.hrupyog"
   erp-domain-name: "sparrowsoftech.in"
   memory_limits: 512Mi
   heap: -Xmx256m -Xms256m
@@ -786,8 +786,8 @@ es-curator:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 # eGov-finance Tenants
 financeTenants: |
-  tenant.citya-digit.sparrowsoftech.in=citya
-  tenant.cityb-digit.sparrowsoftech.in=cityb
+  tenant.citya-dev.hrupyog.sparrowsoftech.in=citya
+  tenant.cityb-dev.hrupyog.sparrowsoftech.in=cityb
   #tenant.digit.sparrowsoftech.in=state
   location.user.role=Collection Operator
   collection.debitaccounthead.client.impl.class=org.egov.collection.integration.services.DebitAccountHeadDetailsServiceImpl
@@ -798,7 +798,7 @@ egov-finance:
   memory_limits: 512Mi
   heap: -Xmx256m -Xms256m
   microservice: |
-    egov.default.services.endpoint=https://digit.sparrowsoftech.in/
+    egov.default.services.endpoint=https://dev.hrupyog.sparrowsoftech.in/
     egov.collection.version={{ index .Values "collection-version" }}
     egov.hrms.service.endpoint=http://egov-hrms.egov:8080/
     egov.accesscontrol.service.endpoint=http://egov-accesscontrol.egov:8080/
