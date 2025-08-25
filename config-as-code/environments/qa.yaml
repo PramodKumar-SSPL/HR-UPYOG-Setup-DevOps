@@ -14,10 +14,10 @@ cluster-configs:
         egov-config:
             namespace: [ egov, monitoring ]
             data:
-                db-host: hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com #43.239.78.2:5432 ## Add db-host name eg: upyog-demo.database.azure.com
+                db-host: ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432 #43.239.78.2:5432 ## Add db-host name eg: upyog-demo.database.azure.com
                 db-name: hrupyog ## Add db-name
-                db-url: jdbc:postgresql://hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com:5432/hrfinance ## example: jdbc:postgresql://upyog-demo.postgres.database.azure.com:5432/egov_demo
-                erp-db-url: jdbc:postgresql://hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com:5432/finance-sspl_db
+                db-url: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyog ## example: jdbc:postgresql://upyog-demo.postgres.database.azure.com:5432/egov_demo
+                erp-db-url: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance
                 domain: dev.hrupyog.sparrowsoftech.in ## Add your Domain Name    
                 egov-services-fqdn-name: https://dev.hrupyog.sparrowsoftech.in/ ## Add your Domain Name
                 egov-state-level-tenant-id: "hr"
@@ -184,7 +184,7 @@ pgadmin:
     - egovio/pgadmin:v0.1
 
 pgadmin-config:
-  host: "hrupyog-dev-db.cjcmeuyim39s.ap-south-1.rds.amazonaws.com"
+  host: "ec2-13-204-21-213.ap-south-1.compute.amazonaws.com"
   db-admin-username: "hrupyog"
   db-read-username: "pbprod_readonly"
   port: "5432"
