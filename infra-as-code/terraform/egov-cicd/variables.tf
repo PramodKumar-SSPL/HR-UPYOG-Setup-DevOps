@@ -27,7 +27,7 @@ variable "kubernetes_version" {
 }
 
 variable "instance_type" {
-  default = "t3a.xlarge"
+  default = "r5ad.xlarge"
 }
 
 variable "override_instance_types" {
