@@ -59,11 +59,11 @@ diagnosticMode:
   ## @param diagnosticMode.command Command to override all containers in the statefulset
   ##
   command:
-    - sleep
+  - sleep
   ## @param diagnosticMode.args Args to override all containers in the statefulset
   ##
   args:
-    - infinity
+  - infinity
 
 ## @section Kafka parameters
 ##
@@ -80,8 +80,8 @@ diagnosticMode:
 ##
 image:
   registry: docker.io
-  repository: bitnami/kafka
-  tag: 3.6.0-debian-11-r0
+  repository: bitnamilegacy/kafka
+  tag: 4.0.0-debian-12-r10
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -145,7 +145,7 @@ listeners:
   ## @param listeners.client.containerPort Port for the Kafka client listener
   ## @param listeners.client.protocol Security protocol for the Kafka client listener. Allowed values are 'PLAINTEXT', 'SASL_PLAINTEXT', 'SASL_SSL' and 'SSL'
   ## @param listeners.client.sslClientAuth Optional. If SASL_SSL is enabled, configure mTLS TLS authentication type. If SSL protocol is enabled, overrides tls.authType for this listener. Allowed values are 'none', 'requested' and 'required'
-  client: 
+  client:
     containerPort: 9092
     protocol: PLAINTEXT
     name: CLIENT
@@ -155,7 +155,7 @@ listeners:
   ## @param listeners.controller.protocol Security protocol for the Kafka controller listener. Allowed values are 'PLAINTEXT', 'SASL_PLAINTEXT', 'SASL_SSL' and 'SSL'
   ## @param listeners.controller.sslClientAuth Optional. If SASL_SSL is enabled, configure mTLS TLS authentication type. If SSL protocol is enabled, overrides tls.authType for this listener. Allowed values are 'none', 'requested' and 'required'
   ## Ref: https://cwiki.apache.org/confluence/display/KAFKA/KIP-684+-+Support+mutual+TLS+authentication+on+SASL_SSL+listeners
-  controller: 
+  controller:
     name: CONTROLLER
     containerPort: 9093
     protocol: PLAINTEXT
@@ -164,7 +164,7 @@ listeners:
   ## @param listeners.interbroker.containerPort Port for the Kafka inter-broker listener
   ## @param listeners.interbroker.protocol Security protocol for the Kafka inter-broker listener. Allowed values are 'PLAINTEXT', 'SASL_PLAINTEXT', 'SASL_SSL' and 'SSL'
   ## @param listeners.interbroker.sslClientAuth Optional. If SASL_SSL is enabled, configure mTLS TLS authentication type. If SSL protocol is enabled, overrides tls.authType for this listener. Allowed values are 'none', 'requested' and 'required'
-  interbroker: 
+  interbroker:
     containerPort: 9094
     protocol: PLAINTEXT
     name: INTERNAL
@@ -173,7 +173,7 @@ listeners:
   ## @param listeners.external.protocol Security protocol for the Kafka external listener. . Allowed values are 'PLAINTEXT', 'SASL_PLAINTEXT', 'SASL_SSL' and 'SSL'
   ## @param listeners.external.name Name for the Kafka external listener
   ## @param listeners.external.sslClientAuth Optional. If SASL_SSL is enabled, configure mTLS TLS authentication type. If SSL protocol is enabled, overrides tls.sslClientAuth for this listener. Allowed values are 'none', 'requested' and 'required'
-  external: 
+  external:
     containerPort: 9095
     protocol: PLAINTEXT
     name: EXTERNAL
@@ -248,7 +248,7 @@ sasl:
   ##
   client:
     users:
-      - user1
+    - user1
     passwords: ""
   ## Credentials for Zookeeper communications.
   ## @param sasl.zookeeper.user Username for zookeeper communications when SASL is enabled.
@@ -603,7 +603,7 @@ controller:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
     capabilities:
-      drop: ["ALL"]
+      drop: [ "ALL" ]
   ## @param controller.hostAliases Kafka pods host aliases
   ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
   ##
@@ -765,7 +765,7 @@ controller:
     ## @param controller.persistence.accessModes Persistent Volume Access Modes
     ##
     accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
     ## @param controller.persistence.size PVC Storage Request for Kafka data volume
     ##
     size: 8Gi
@@ -805,7 +805,7 @@ controller:
     ## @param controller.logPersistence.accessModes Persistent Volume Access Modes
     ##
     accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
     ## @param controller.logPersistence.size PVC Storage Request for Kafka logs volume
     ##
     size: 8Gi
@@ -982,7 +982,7 @@ broker:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
     capabilities:
-      drop: ["ALL"]
+      drop: [ "ALL" ]
   ## @param broker.hostAliases Kafka pods host aliases
   ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
   ##
@@ -1144,7 +1144,7 @@ broker:
     ## @param broker.persistence.accessModes Persistent Volume Access Modes
     ##
     accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
     ## @param broker.persistence.size PVC Storage Request for Kafka data volume
     ##
     size: 8Gi
@@ -1184,7 +1184,7 @@ broker:
     ## @param broker.logPersistence.accessModes Persistent Volume Access Modes
     ##
     accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
     ## @param broker.logPersistence.size PVC Storage Request for Kafka logs volume
     ##
     size: 8Gi
@@ -1200,7 +1200,6 @@ broker:
     ## @param broker.logPersistence.mountPath Mount path of the Kafka logs volume
     ##
     mountPath: /opt/bitnami/kafka/logs
-
 
 ## @section Traffic Exposure parameters
 ##
@@ -1729,7 +1728,7 @@ metrics:
       allowPrivilegeEscalation: false
       readOnlyRootFilesystem: true
       capabilities:
-        drop: ["ALL"]
+        drop: [ "ALL" ]
     ## @param metrics.kafka.hostAliases Kafka exporter pods host aliases
     ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
     ##
@@ -1930,7 +1929,7 @@ metrics:
       allowPrivilegeEscalation: false
       readOnlyRootFilesystem: true
       capabilities:
-        drop: ["ALL"]
+        drop: [ "ALL" ]
     ## @param metrics.jmx.containerPorts.metrics Prometheus JMX exporter metrics container port
     ##
     containerPorts:
@@ -1971,11 +1970,11 @@ metrics:
     ## (2) commented out above `overrideConfig`.
     ##
     whitelistObjectNames:
-      - kafka.controller:*
-      - kafka.server:*
-      - java.lang:*
-      - kafka.network:*
-      - kafka.log:*
+    - kafka.controller:*
+    - kafka.server:*
+    - java.lang:*
+    - kafka.network:*
+    - kafka.log:*
     ## @param metrics.jmx.config [string] Configuration file for JMX exporter
     ## Specify content for jmx-kafka-prometheus.yml. Evaluated as a template
     ##
@@ -2251,7 +2250,7 @@ provisioning:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
     capabilities:
-      drop: ["ALL"]
+      drop: [ "ALL" ]
   ## @param provisioning.schedulerName Name of the k8s scheduler (other than default) for kafka provisioning
   ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
   ##
@@ -2369,7 +2368,7 @@ zookeeper:
     enabled: true
     storageClass: ""
     accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
     size: 8Gi
 
 ## External Zookeeper Configuration
