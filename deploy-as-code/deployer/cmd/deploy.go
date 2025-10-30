@@ -18,6 +18,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"deployer/pkg/cmd/deployer"
 
 	"github.com/spf13/cobra"
@@ -42,6 +43,14 @@ to quickly create a Cobra application.`,
 			return errors.New("At least require one image to deploy")
 		}
 		options.Images = args[0]
+
+		// Validate environment flag early to avoid constructing invalid file paths
+		if options.Environment == "" {
+			return errors.New("environment flag (-e) is required and must be a simple name like 'qa'")
+		}
+		if strings.Contains(options.Environment, "/") || strings.Contains(options.Environment, ":") {
+			return errors.New("invalid environment value. Pass only environment name (no '/' or ':'), e.g. -e qa. Images must be provided as the positional argument, e.g. 'deploy hrupyog/egov-finance:dev-v... -e qa -c'")
+		}
 
 		return nil
 	},

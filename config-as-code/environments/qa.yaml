@@ -786,7 +786,16 @@ es-curator:
 # eGov-finance Tenants
 financeTenants: |
   tenant.citya-dev-hrupyog.sparrowsoftech.in=citya
-  tenant.cityb-dev-hrupyog.sparrowsoftech.in=cityb
+  tenant.Panchkula-MC-dev-hrupyog.sparrowsoftech.in=Panchkula-MC
+  tenant.Thanesar-MC-dev-hrupyog.sparrowsoftech.in=Thanesar-MC
+  tenant.Kundli-MC-dev-hrupyog.sparrowsoftech.in=Kundli-MC
+  tenant.Ratia-MC-dev-hrupyog.sparrowsoftech.in=Ratia-MC
+  tenant.Farukh_Nagar-MC-dev-hrupyog.sparrowsoftech.in=Farukh_Nagar-MC
+  tenant.Rewari-MC-dev-hrupyog.sparrowsoftech.in=Rewari-MC
+  tenant.Samalkha-MC-dev-hrupyog.sparrowsoftech.in=Samalkha-MC
+  tenant.Sampla-MC-dev-hrupyog.sparrowsoftech.in=Sampla-MC
+  tenant.Sohna-MC-dev-hrupyog.sparrowsoftech.in=Sohna-MC
+  
   tenant.gurugram-dev-hrupyog.sparrowsoftech.in=gurugram
   #tenant.cityd-dev-hrupyog.sparrowsoftech.in=cityd
   #tenant.dev-hrupyog.sparrowsoftech.in=state
@@ -796,8 +805,13 @@ financeTenants: |
 egov-finance:
   dev_mode: true
   filestore_beanname: microDiskFileStoreService
-  memory_limits: 1024Mi
+# memory_limits: 1024Mi
   heap: -Xmx512m -Xms512m
+  resources: # <--- This is the standard K8s resources block
+    limits:
+      memory: "3Gi"
+    requests:
+      memory: "3Gi"
   microservice: |
     egov.default.services.endpoint=https://dev-hrupyog.sparrowsoftech.in/
     egov.collection.version={{ index .Values "collection-version" }}
