@@ -786,15 +786,15 @@ es-curator:
 # eGov-finance Tenants
 financeTenants: |
   tenant.citya-dev-hrupyog.sparrowsoftech.in=citya
-  tenant.Panchkula-MC-dev-hrupyog.sparrowsoftech.in=Panchkula-MC
-  tenant.Thanesar-MC-dev-hrupyog.sparrowsoftech.in=Thanesar-MC
-  tenant.Kundli-MC-dev-hrupyog.sparrowsoftech.in=Kundli-MC
-  tenant.Ratia-MC-dev-hrupyog.sparrowsoftech.in=Ratia-MC
-  tenant.Farukh_Nagar-MC-dev-hrupyog.sparrowsoftech.in=Farukh_Nagar-MC
-  tenant.Rewari-MC-dev-hrupyog.sparrowsoftech.in=Rewari-MC
-  tenant.Samalkha-MC-dev-hrupyog.sparrowsoftech.in=Samalkha-MC
-  tenant.Sampla-MC-dev-hrupyog.sparrowsoftech.in=Sampla-MC
-  tenant.Sohna-MC-dev-hrupyog.sparrowsoftech.in=Sohna-MC
+  tenant.panchkula-dev-hrupyog.sparrowsoftech.in=panchkula
+  tenant.thanesar-dev-hrupyog.sparrowsoftech.in=thanesar
+  tenant.kundli-dev-hrupyog.sparrowsoftech.in=kundli
+  tenant.ratia-dev-hrupyog.sparrowsoftech.in=ratia
+  tenant.farrukhnagar-dev-hrupyog.sparrowsoftech.in=farrukhnagar
+  tenant.rewari-dev-hrupyog.sparrowsoftech.in=rewari
+  tenant.samalkha-dev-hrupyog.sparrowsoftech.in=samalkha
+  tenant.sampla-dev-hrupyog.sparrowsoftech.in=sampla
+  tenant.sohna-dev-hrupyog.sparrowsoftech.in=sohna
   
   tenant.gurugram-dev-hrupyog.sparrowsoftech.in=gurugram
   #tenant.cityd-dev-hrupyog.sparrowsoftech.in=cityd
