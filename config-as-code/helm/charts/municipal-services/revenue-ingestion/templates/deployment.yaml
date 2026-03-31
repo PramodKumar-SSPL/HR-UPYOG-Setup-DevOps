@@ -1,2 +1,3 @@
 # deployment.yaml
+# This file is part of the Municipal Services project.
 {{- template "common.deployment" . -}}
