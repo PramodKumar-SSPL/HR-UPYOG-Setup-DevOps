@@ -1,0 +1,356 @@
+=========================================================================
+
+  JBoss Bootstrap Environment
+
+  JBOSS_HOME: /opt/jboss/wildfly
+
+  JAVA: /usr/lib/jvm/java/bin/java
+
+  JAVA_OPTS:  -server -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true  
+
+=========================================================================
+
+Failed to read or configure the org.jboss.logmanager.LogManager
+java.lang.IllegalArgumentException: Failed to instantiate class "org.jboss.logmanager.handlers.PeriodicRotatingFileHandler" for handler "FILE"
+	at org.jboss.logmanager.config.AbstractPropertyConfiguration$ConstructAction.lambda$validate$2(AbstractPropertyConfiguration.java:122)
+	at org.jboss.logmanager.config.WrappedAction.execute(WrappedAction.java:42)
+	at org.jboss.logmanager.config.AbstractPropertyConfiguration$ConstructAction.validate(AbstractPropertyConfiguration.java:118)
+	at org.jboss.logmanager.config.LogContextConfigurationImpl.doPrepare(LogContextConfigurationImpl.java:336)
+	at org.jboss.logmanager.config.LogContextConfigurationImpl.prepare(LogContextConfigurationImpl.java:289)
+	at org.jboss.logmanager.config.LogContextConfigurationImpl.commit(LogContextConfigurationImpl.java:298)
+	at org.jboss.logmanager.PropertyConfigurator.configure(PropertyConfigurator.java:546)
+	at org.jboss.logmanager.PropertyConfigurator.configure(PropertyConfigurator.java:97)
+	at org.jboss.logmanager.LogManager.readConfiguration(LogManager.java:170)
+	at org.jboss.logmanager.LogManager.readConfiguration(LogManager.java:132)
+	at java.util.logging.LogManager$3.run(LogManager.java:399)
+	at java.util.logging.LogManager$3.run(LogManager.java:396)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.readPrimordialConfiguration(LogManager.java:396)
+	at java.util.logging.LogManager.access$800(LogManager.java:145)
+	at java.util.logging.LogManager$2.run(LogManager.java:345)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.ensureLogManagerInitialized(LogManager.java:338)
+	at java.util.logging.LogManager.getLogManager(LogManager.java:378)
+	at org.jboss.modules.Main.main(Main.java:444)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.jboss.logmanager.config.AbstractPropertyConfiguration$ConstructAction.lambda$validate$2(AbstractPropertyConfiguration.java:120)
+	... 19 more
+Caused by: java.io.FileNotFoundException: /opt/wildfly-26.1.3.Final/standalone/log/server.log (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at org.jboss.logmanager.handlers.FileHandler.setFile(FileHandler.java:151)
+	at org.jboss.logmanager.handlers.PeriodicRotatingFileHandler.setFile(PeriodicRotatingFileHandler.java:109)
+	at org.jboss.logmanager.handlers.FileHandler.setFileName(FileHandler.java:189)
+	at org.jboss.logmanager.handlers.FileHandler.<init>(FileHandler.java:119)
+	at org.jboss.logmanager.handlers.PeriodicRotatingFileHandler.<init>(PeriodicRotatingFileHandler.java:77)
+	... 24 more
+[0m06:39:08,652 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "egov-ear-3.0.2-COE-SNAPSHOT.ear" (runtime-name: "egov-ear-3.0.2-COE-SNAPSHOT.ear")
+[0m[0m06:39:08,656 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) WFLYJCA0001: Bound data source [java:/READWRITE_DS]
+[0m[0m06:39:09,049 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-2) WFLYMSGAMQ0075: AIO wasn't located on this platform, it will fall back to using pure Java NIO. Your platform is Linux, install LibAIO to enable the AIO journal and achieve optimal performance.
+[0m[0m06:39:10,065 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0001: Bound data source [java:jboss/datasources/QUARTZ_NO_TXN_DS]
+[0m[0m06:39:11,360 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBossWS 5.5.0.Final (Apache CXF 3.4.10) 
+[0m[0m06:39:12,162 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=true,journalDirectory=/opt/jboss/wildfly/standalone/data/activemq/journal,bindingsDirectory=/opt/jboss/wildfly/standalone/data/activemq/bindings,largeMessagesDirectory=/opt/jboss/wildfly/standalone/data/activemq/largemessages,pagingDirectory=/opt/jboss/wildfly/standalone/data/activemq/paging)
+[0m[0m06:39:12,553 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221013: Using NIO Journal
+[0m[0m06:39:14,350 INFO  [org.jboss.vfs] (MSC service thread 1-2) VFS000002: Failed to clean existing content for temp file provider of type deployment. Enable DEBUG level log to find what caused this
+[0m[0m06:39:14,560 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+[0m[0m06:39:14,648 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+[0m[0m06:39:14,649 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+[0m[0m06:39:14,649 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+[0m[0m06:39:16,361 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221034: Waiting indefinitely to obtain live lock
+[0m[0m06:39:16,362 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221035: Live Server Obtained live lock
+[0m[0m06:39:20,550 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.ExpiryQueue on address jms.queue.ExpiryQueue
+[0m[0m06:39:20,749 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.DLQ on address jms.queue.DLQ
+[0m[0m06:39:20,750 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.EmailMessageQueue on address jms.queue.EmailMessageQueue
+[0m[0m06:39:20,753 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.SMSMessageQueue on address jms.queue.SMSMessageQueue
+[0m[0m06:39:20,754 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.FlashMessageQueue on address jms.queue.FlashMessageQueue
+[0m[0m06:39:20,861 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-1) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor acceptor
+[0m[0m06:39:20,862 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-1) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor-throughput acceptor
+[0m[0m06:39:20,863 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-1) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor acceptor
+[0m[0m06:39:20,863 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-1) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor-throughput acceptor
+[0m[0m06:39:23,060 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221007: Server is now live
+[0m[0m06:39:23,061 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.19.1 [default, nodeID=f472a73e-ce77-11f0-88b9-fc777421d5a9] 
+[0m[0m06:39:23,756 INFO  [org.wildfly.extension.messaging-activemq] (ServerService Thread Pool -- 79) WFLYMSGAMQ0002: Bound messaging object to jndi name java:/ConnectionFactory
+[0m[33m06:39:23,950 WARN  [org.apache.activemq.artemis.jms.server] (ServerService Thread Pool -- 82) AMQ122005: Invalid "host" value "0.0.0.0" detected for "http-connector" connector. Switching to "egov-finance-df6b5d586-8l5ck". If this new address is incorrect please manually configure the connector to use the proper one.
+[0m[0m06:39:23,955 INFO  [org.wildfly.extension.messaging-activemq] (ServerService Thread Pool -- 82) WFLYMSGAMQ0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+[0m[0m06:39:24,362 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-1) WFLYJCA0007: Registered connection factory java:/JmsXA
+[0m[0m06:39:24,960 INFO  [org.apache.activemq.artemis.ra.ActiveMQRALogger] (MSC service thread 1-1) AMQ151007: Resource adaptor started
+[0m[0m06:39:24,961 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-1) IJ020002: Deployed: file://RaActivatoractivemq-ra
+[0m[0m06:39:25,048 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-1) WFLYJCA0002: Bound Jakarta Connectors ConnectionFactory [java:/JmsXA]
+[0m[0m06:39:25,048 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-1) WFLYJCA0118: Binding connection factory named java:/JmsXA to alias java:jboss/DefaultJMSConnectionFactory
+[0m[33m06:40:33,060 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,060 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,061 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jdom-1.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,061 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-beanutils-1.7.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,061 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-logging-1.1.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,061 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry velocity-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,062 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry velocity-dep-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,366 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,366 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,448 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jdom-1.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,448 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-beanutils-1.7.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,448 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-logging-1.1.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,663 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-referencing-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,755 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-api-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,756 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-api-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,863 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,948 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,949 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry jdom-1.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,950 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-beanutils-1.7.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,950 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry commons-logging-1.1.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,951 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry velocity-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,951 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry velocity-dep-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,952 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry gt-render-2.5.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,952 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry gt-coverage-2.5.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,953 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry gt-cql-2.5.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,953 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry batik-transcoder-1.6.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,953 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry batik-util-1.6.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,954 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry xercesImpl-2.7.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m06:40:33,954 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0059: Class Path entry xml-apis-xerces-2.7.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[0m06:40:34,057 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-collectionweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m06:40:34,058 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-commonsweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m06:40:34,060 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-egfweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m06:40:34,060 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-eisweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m06:40:34,062 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-egiweb-3.0.2-COE-SNAPSHOT.war")
+[0m[33m06:40:46,354 WARN  [org.jboss.as.dependency.deprecated] (MSC service thread 1-2) WFLYSRV0221: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a deprecated module ("org.apache.log4j") which may be removed in future versions without notice.
+[0m[33m06:40:46,356 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.javassist") which may be changed or removed in future versions without notice.
+[0m[33m06:40:46,360 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.jaxen") which may be changed or removed in future versions without notice.
+[0m[33m06:40:46,455 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.bouncycastle") which may be changed or removed in future versions without notice.
+[0m[33m06:40:46,456 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.jboss.as.clustering.infinispan") which may be changed or removed in future versions without notice.
+[0m[33m06:41:03,148 WARN  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0013: Deployment egov-ear-3.0.2-COE-SNAPSHOT.ear contains Jakarta Contexts and Dependency Injection annotations but no bean archive was found (no beans.xml or class with bean defining annotations was present).
+[0m[0m06:41:06,359 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 85) ISPN000128: Infinispan version: Infinispan 'Triskaidekaphobia' 13.0.10.Final
+[0m[0m06:41:07,362 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 85) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+[0m[0m06:41:09,353 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 86) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.marshalling.jboss.JBossMarshaller'
+[0m[0m06:41:09,862 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 87) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+[0m[0m06:41:13,449 INFO  [org.infinispan.CONFIG] (MSC service thread 1-2) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m06:41:13,451 INFO  [org.infinispan.CONFIG] (MSC service thread 1-2) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m06:41:13,453 INFO  [org.infinispan.CONFIG] (MSC service thread 1-1) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m06:41:13,462 INFO  [org.infinispan.CONFIG] (MSC service thread 1-1) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m06:41:13,655 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 85) ISPN000025: wakeUpInterval is <= 0, not starting expired purge thread
+[0m[0m06:41:13,750 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 85) WFLYCLINF0002: Started http-remoting-connector cache from ejb container
+[0m[0m06:41:14,848 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 86) ISPN000025: wakeUpInterval is <= 0, not starting expired purge thread
+[0m[0m06:41:14,950 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 86) WFLYCLINF0002: Started egov-ear-3.0.2-COE-SNAPSHOT.ear cache from web container
+[0m[0m06:41:16,556 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 104) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m06:41:16,556 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 86) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m06:41:16,553 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 113) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m06:41:16,555 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 112) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m06:41:16,553 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 111) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m06:41:16,761 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 104) Initializing Spring root WebApplicationContext
+[0m[0m06:41:16,849 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 113) Initializing Spring root WebApplicationContext
+[0m[0m06:41:16,849 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 112) Initializing Spring root WebApplicationContext
+[0m[0m06:41:16,849 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 86) Initializing Spring root WebApplicationContext
+[0m[0m06:41:16,852 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 104) Root WebApplicationContext: initialization started
+[0m[0m06:41:16,850 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 113) Root WebApplicationContext: initialization started
+[0m[0m06:41:16,850 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 112) Root WebApplicationContext: initialization started
+[0m[0m06:41:16,850 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 86) Root WebApplicationContext: initialization started
+[0m[0m06:41:16,856 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 111) Initializing Spring root WebApplicationContext
+[0m[0m06:41:17,050 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 111) Root WebApplicationContext: initialization started
+[0m[0m06:41:17,351 INFO  [org.springframework.context.support.ClassPathXmlApplicationContext] (ServerService Thread Pool -- 86) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7aabcff0: startup date [Sat Dec 13 06:41:17 UTC 2025]; root of context hierarchy
+[0m[0m06:41:17,652 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from URL [vfs:/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-config-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-erp.xml]
+[0m[0m06:41:20,364 INFO  [org.springframework.context.support.ClassPathXmlApplicationContext] (ServerService Thread Pool -- 86) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6df4f6d7: startup date [Sat Dec 13 06:41:20 UTC 2025]; root of context hierarchy
+[0m[0m06:41:20,365 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from URL [vfs:/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-config-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-security.xml]
+[0m[0m06:41:21,256 INFO  [org.springframework.security.core.SpringSecurityCoreVersion] (ServerService Thread Pool -- 86) You are running with Spring Security Core 4.2.3.RELEASE
+[0m[0m06:41:21,259 INFO  [org.springframework.security.config.SecurityNamespaceHandler] (ServerService Thread Pool -- 86) Spring Security 'config' module version is 4.2.3.RELEASE
+[0m[0m06:41:21,759 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egi-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-infra-services.xml"]
+[0m[0m06:41:24,655 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-commons-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-commons-services.xml"]
+[0m[0m06:41:25,251 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egf-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-fin-services.xml"]
+[0m[0m06:41:26,959 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] (ServerService Thread Pool -- 86) Overriding bean definition for bean 'budgetDetailService' with a different definition: replacing [Generic bean: class [org.egov.services.budget.BudgetDetailService]; scope=singleton; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egf-3.0.2-COE-SNAPSHOT.jar/org/egov/services/budget/BudgetDetailService.class"]] with [Generic bean: class [org.egov.services.budget.BudgetDetailService]; scope=; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egf-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-fin-services.xml"]]
+[0m[0m06:41:27,055 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-collection-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-collection-services.xml"]
+[0m[0m06:41:27,758 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] (ServerService Thread Pool -- 86) Overriding bean definition for bean 'collectionService' with a different definition: replacing [Generic bean: class [org.egov.collection.service.CollectionService]; scope=singleton; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-collection-3.0.2-COE-SNAPSHOT.jar/org/egov/collection/service/CollectionService.class"]] with [Generic bean: class [org.egov.collection.service.CollectionService]; scope=; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-collection-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-collection-services.xml"]]
+[0m[0m06:41:27,849 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 86) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-eis-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-eis-services.xml"]
+[0m[0m06:41:32,758 INFO  [org.springframework.context.annotation.ConfigurationClassParser] (ServerService Thread Pool -- 86) Properties location [classpath:config/egov-erp-${user.name}.properties] not resolvable: class path resource [config/egov-erp-jboss.properties] cannot be opened because it does not exist
+[0m[0m06:41:32,759 INFO  [org.springframework.context.annotation.ConfigurationClassParser] (ServerService Thread Pool -- 86) Properties location [classpath:config/application-config-${client.id}.properties] not resolvable: Could not resolve placeholder 'client.id' in value "classpath:config/application-config-${client.id}.properties"
+[0m[0m06:41:33,750 INFO  [org.springframework.context.annotation.ConfigurationClassParser] (ServerService Thread Pool -- 86) Properties location [classpath:config/egov-erp-${user.name}.properties] not resolvable: class path resource [config/egov-erp-jboss.properties] cannot be opened because it does not exist
+[0m[0m06:41:33,751 INFO  [org.springframework.context.annotation.ConfigurationClassParser] (ServerService Thread Pool -- 86) Properties location [classpath:config/application-config-${client.id}.properties] not resolvable: Could not resolve placeholder 'client.id' in value "classpath:config/application-config-${client.id}.properties"
+[0m[0m06:41:33,752 INFO  [org.springframework.context.annotation.ConfigurationClassParser] (ServerService Thread Pool -- 86) Properties location [classpath:config/collection-override-${env}.properties] not resolvable: Could not resolve placeholder 'env' in value "classpath:config/collection-override-${env}.properties"
+[0m[0m06:41:34,258 INFO  [org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader] (ServerService Thread Pool -- 86) Skipping bean definition for [BeanMethod:name=localeResolver,declaringClass=org.egov.infra.config.core.ApplicationConfiguration]: a definition for bean 'localeResolver' already exists. This top-level bean definition is considered as an override.
+[0m[0m06:41:34,259 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] (ServerService Thread Pool -- 86) Overriding bean definition for bean 'emailNotificationListener' with a different definition: replacing [Generic bean: class [org.egov.infra.config.notification.listener.EmailNotificationListener]; scope=singleton; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egi-3.0.2-COE-SNAPSHOT.jar/org/egov/infra/config/notification/listener/EmailNotificationListener.class"]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=notificationConfiguration; factoryMethodName=emailNotificationListener; initMethodName=null; destroyMethodName=(inferred); defined in org.egov.infra.config.notification.NotificationConfiguration]
+[0m[0m06:41:34,649 INFO  [org.springframework.data.repository.config.RepositoryConfigurationDelegate] (ServerService Thread Pool -- 86) Multiple Spring Data modules found, entering strict repository configuration mode!
+[0m[0m06:41:49,049 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] (ServerService Thread Pool -- 86) JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[0m[0m06:41:50,057 INFO  [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] (ServerService Thread Pool -- 86) Bean 'applicationEventConfiguration' of type [org.egov.infra.config.event.ApplicationEventConfiguration$$EnhancerBySpringCGLIB$$a42ac85f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[0m[0m06:41:50,150 INFO  [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] (ServerService Thread Pool -- 86) Initializing ExecutorService 
+[0m[0m06:41:56,560 INFO  [org.flywaydb.core.internal.util.VersionPrinter] (ServerService Thread Pool -- 86) Flyway Community Edition 5.0.3 by Boxfuse
+[0m[0m06:41:57,254 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:41:57,563 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:41:57,754 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/ratia
+[0m[33m06:41:59,449 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/ratia
+[0m[33m06:41:59,450 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/ratia
+[0m[33m06:41:59,758 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/ratia
+[0m[33m06:41:59,761 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/ratia
+[0m[0m06:42:00,756 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 676 migrations (execution time 00:02.800s)
+[0m[0m06:42:01,069 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "ratia": 20251212181047
+[0m[33m06:42:01,069 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "ratia" may not be reproducible.
+[0m[0m06:42:01,071 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "ratia" is up to date. No migration necessary.
+[0m[0m06:42:01,157 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:01,160 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:01,251 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sohna
+[0m[33m06:42:02,364 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sohna
+[0m[33m06:42:02,364 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sohna
+[0m[33m06:42:02,448 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sohna
+[0m[33m06:42:02,450 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sohna
+[0m[0m06:42:02,958 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:01.697s)
+[0m[0m06:42:03,249 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "sohna": 20251711152747
+[0m[33m06:42:03,249 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "sohna" may not be reproducible.
+[0m[33m06:42:03,251 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "sohna" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:03,256 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "sohna" is up to date. No migration necessary.
+[0m[0m06:42:03,266 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:03,351 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:03,357 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/rewari
+[0m[33m06:42:04,147 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/rewari
+[0m[33m06:42:04,148 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/rewari
+[0m[33m06:42:04,256 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/rewari
+[0m[33m06:42:04,258 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/rewari
+[0m[0m06:42:04,448 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:01.081s)
+[0m[0m06:42:04,653 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "rewari": 20251711152747
+[0m[33m06:42:04,653 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "rewari" may not be reproducible.
+[0m[33m06:42:04,654 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "rewari" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:04,656 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "rewari" is up to date. No migration necessary.
+[0m[0m06:42:04,664 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:04,748 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:04,754 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/panchkula
+[0m[33m06:42:05,453 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/panchkula
+[0m[33m06:42:05,454 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/panchkula
+[0m[33m06:42:05,653 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/panchkula
+[0m[33m06:42:05,655 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/panchkula
+[0m[0m06:42:05,960 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:01.197s)
+[0m[0m06:42:06,161 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "panchkula": 20251711152747
+[0m[33m06:42:06,161 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "panchkula" may not be reproducible.
+[0m[33m06:42:06,162 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "panchkula" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:06,164 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "panchkula" is up to date. No migration necessary.
+[0m[0m06:42:06,254 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:06,259 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:06,260 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/gurugram
+[0m[33m06:42:06,361 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/gurugram
+[0m[33m06:42:06,362 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/gurugram
+[0m[33m06:42:06,959 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/gurugram
+[0m[33m06:42:06,962 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/gurugram
+[0m[0m06:42:07,158 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 676 migrations (execution time 00:00.799s)
+[0m[0m06:42:07,351 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "gurugram": 20251212181047
+[0m[33m06:42:07,351 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "gurugram" may not be reproducible.
+[0m[0m06:42:07,354 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "gurugram" is up to date. No migration necessary.
+[0m[0m06:42:07,364 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:07,450 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:07,457 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sampla
+[0m[33m06:42:08,063 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sampla
+[0m[33m06:42:08,147 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sampla
+[0m[33m06:42:08,249 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sampla
+[0m[33m06:42:08,251 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/sampla
+[0m[0m06:42:08,451 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 676 migrations (execution time 00:00.893s)
+[0m[0m06:42:08,549 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "sampla": 20251212181047
+[0m[33m06:42:08,549 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "sampla" may not be reproducible.
+[0m[0m06:42:08,552 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "sampla" is up to date. No migration necessary.
+[0m[0m06:42:08,648 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:08,651 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:08,659 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/pataudi
+[0m[33m06:42:09,249 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/pataudi
+[0m[33m06:42:09,249 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/pataudi
+[0m[33m06:42:09,352 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/pataudi
+[0m[33m06:42:09,354 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/pataudi
+[0m[0m06:42:09,662 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:00.994s)
+[0m[0m06:42:09,774 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "pataudi": 20251711152747
+[0m[33m06:42:09,775 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "pataudi" may not be reproducible.
+[0m[33m06:42:09,775 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "pataudi" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:09,777 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "pataudi" is up to date. No migration necessary.
+[0m[0m06:42:09,851 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:09,855 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:09,856 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/kundli
+[0m[33m06:42:09,956 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/kundli
+[0m[33m06:42:09,957 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/kundli
+[0m[33m06:42:10,457 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/kundli
+[0m[33m06:42:10,466 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/kundli
+[0m[0m06:42:10,748 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 676 migrations (execution time 00:00.797s)
+[0m[0m06:42:10,950 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "kundli": 20251212181047
+[0m[33m06:42:10,954 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "kundli" may not be reproducible.
+[0m[0m06:42:10,957 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "kundli" is up to date. No migration necessary.
+[0m[0m06:42:11,049 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:11,053 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:11,054 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/citya
+[0m[33m06:42:11,159 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/citya
+[0m[33m06:42:11,160 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/citya
+[0m[33m06:42:11,662 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/citya
+[0m[33m06:42:11,749 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/citya
+[0m[0m06:42:11,856 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:00.699s)
+[0m[0m06:42:12,048 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "citya": 20251711152747
+[0m[33m06:42:12,048 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "citya" may not be reproducible.
+[0m[33m06:42:12,049 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "citya" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:12,051 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "citya" is up to date. No migration necessary.
+[0m[0m06:42:12,058 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:12,061 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:12,061 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/farrukhnagar
+[0m[33m06:42:12,160 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/farrukhnagar
+[0m[33m06:42:12,161 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/farrukhnagar
+[0m[33m06:42:12,661 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/farrukhnagar
+[0m[33m06:42:12,662 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/farrukhnagar
+[0m[0m06:42:12,855 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:00.698s)
+[0m[0m06:42:13,051 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "farrukhnagar": 20251711152747
+[0m[33m06:42:13,051 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "farrukhnagar" may not be reproducible.
+[0m[33m06:42:13,052 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "farrukhnagar" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:13,054 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "farrukhnagar" is up to date. No migration necessary.
+[0m[0m06:42:13,061 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:13,064 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:13,149 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/thanesar
+[0m[33m06:42:13,749 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/thanesar
+[0m[33m06:42:13,749 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/thanesar
+[0m[33m06:42:13,751 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/thanesar
+[0m[33m06:42:13,753 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/thanesar
+[0m[0m06:42:14,048 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:00.891s)
+[0m[0m06:42:14,165 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "thanesar": 20251711152747
+[0m[33m06:42:14,165 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "thanesar" may not be reproducible.
+[0m[33m06:42:14,166 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "thanesar" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:14,168 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "thanesar" is up to date. No migration necessary.
+[0m[0m06:42:14,174 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:14,177 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:14,250 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/samalkha
+[0m[33m06:42:14,657 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/samalkha
+[0m[33m06:42:14,658 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/samalkha
+[0m[33m06:42:14,760 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/samalkha
+[0m[33m06:42:14,762 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/samalkha
+[0m[0m06:42:14,954 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:00.692s)
+[0m[0m06:42:15,062 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "samalkha": 20251711152747
+[0m[33m06:42:15,065 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "samalkha" may not be reproducible.
+[0m[33m06:42:15,065 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "samalkha" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:15,150 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "samalkha" is up to date. No migration necessary.
+[0m[0m06:42:15,163 INFO  [org.flywaydb.core.internal.database.DatabaseFactory] (ServerService Thread Pool -- 86) Database: jdbc:postgresql://ec2-13-204-21-213.ap-south-1.compute.amazonaws.com:5432/hrupyogfinance (PostgreSQL 16.11)
+[0m[33m06:42:15,165 WARN  [org.flywaydb.core.internal.database.Database] (ServerService Thread Pool -- 86) Flyway upgrade recommended: PostgreSQL 16.11 is newer than this version of Flyway and support has not been tested.
+[0m[33m06:42:15,166 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/generic
+[0m[33m06:42:15,271 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/generic
+[0m[33m06:42:15,272 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/generic
+[0m[33m06:42:15,766 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/generic
+[0m[33m06:42:15,768 WARN  [org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner] (ServerService Thread Pool -- 86) Unable to resolve location classpath:db/migration/generic
+[0m[0m06:42:15,864 INFO  [org.flywaydb.core.internal.command.DbValidate] (ServerService Thread Pool -- 86) Successfully validated 677 migrations (execution time 00:00.595s)
+[0m[0m06:42:16,050 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Current version of schema "generic": 20251711152747
+[0m[33m06:42:16,050 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) outOfOrder mode is active. Migration of schema "generic" may not be reproducible.
+[0m[33m06:42:16,050 WARN  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "generic" has a version (20251711152747) that is newer than the latest available migration (20251212181047) !
+[0m[0m06:42:16,054 INFO  [org.flywaydb.core.internal.command.DbMigrate] (ServerService Thread Pool -- 86) Schema "generic" is up to date. No migration necessary.
+[0m[0m06:42:20,057 INFO  [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] (ServerService Thread Pool -- 86) Building JPA container EntityManagerFactory for persistence unit 'EgovPersistenceUnit'
+[0m[0m06:42:20,256 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 86) HHH000204: Processing PersistenceUnitInfo [
+	name: EgovPersistenceUnit
+	...]
+[0m[0m06:42:20,854 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 86) HHH000412: Hibernate Core {5.3.28.Final}
+[0m[0m06:42:20,857 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 86) HHH000206: hibernate.properties not found
+[0m[0m06:42:22,548 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 86) HCANN000001: Hibernate Commons Annotations {5.0.5.Final}
+[0m[0m06:42:38,557 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 86) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL94Dialect
+[0m[0m06:42:38,751 INFO  [org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl] (ServerService Thread Pool -- 86) HHH000422: Disabling contextual LOB creation as connection was null
+[0m[0m06:42:38,758 INFO  [org.hibernate.type.BasicTypeRegistry] (ServerService Thread Pool -- 86) HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@7ebb137c
+[0m[0m06:42:38,849 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 86) Envers integration enabled? : true
+[0m[0m06:42:46,866 INFO  [org.hibernate.orm.beans] (ServerService Thread Pool -- 86) HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+[0m[0m06:43:21,161 INFO  [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] (ServerService Thread Pool -- 86) HHH000397: Using ASTQueryTranslatorFactory
+[0m[33m06:43:23,160 WARN  [org.hibernate.dialect.function.TemplateRenderer] (ServerService Thread Pool -- 86) HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+[0m[33m06:43:23,360 WARN  [org.hibernate.dialect.function.TemplateRenderer] (ServerService Thread Pool -- 86) HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+[0m[0m06:43:23,856 INFO  [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] (ServerService Thread Pool -- 86) Initialized JPA EntityManagerFactory for persistence unit 'EgovPersistenceUnit'
+[0m[0m06:43:58,462 INFO  [stdout] (ServerService Thread Pool -- 86) ************************* RestTemplate object created*********************
+[0m[0m06:44:01,451 INFO  [stdout] (ServerService Thread Pool -- 86) ****************************** UserSessionDestroyListener object created *******************
+[0m[0m06:44:02,358 INFO  [org.hibernate.validator.internal.util.Version] (ServerService Thread Pool -- 86) HV000001: Hibernate Validator 6.0.23.Final
+[0m[0m06:44:04,858 INFO  [org.springframework.transaction.jta.JtaTransactionManager] (ServerService Thread Pool -- 86) Using JTA UserTransaction: org.wildfly.transaction.client.LocalUserTransaction@10d29381
+[0m[0m06:44:04,859 INFO  [org.springframework.transaction.jta.JtaTransactionManager] (ServerService Thread Pool -- 86) Using JTA TransactionManager: org.wildfly.transaction.client.ContextTransactionManager@74663e93
+[0m[0m06:44:04,859 INFO  [org.springframework.transaction.jta.JtaTransactionManager] (ServerService Thread Pool -- 86) Using JTA TransactionSynchronizationRegistry: org.jboss.as.txn.service.internal.tsr.TransactionSynchronizationRegistryWrapper@3cf2be39
+[0m[33m06:44:06,051 WARN  [org.hibernate.dialect.function.TemplateRenderer] (ServerService Thread Pool -- 86) HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+[0m[31m06:44:08,649 ERROR [org.jboss.as.controller.management-operation] (Controller Boot Thread) WFLYCTL0348: Timeout after [300] seconds waiting for service container stability. Operation will roll back. Step that first updated the service container was 'add' at address '[
+    ("core-service" => "management"),
+    ("management-interface" => "http-interface")
+]'
+[0m

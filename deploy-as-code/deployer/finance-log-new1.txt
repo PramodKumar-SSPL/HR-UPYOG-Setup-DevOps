@@ -1,0 +1,168 @@
+JAVA_OPTS already set in environment; overriding default settings with values: -server -Xms1024m -Xmx2048m  -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=512m  -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true  -Djboss.as.management.blocking.timeout=900
+=========================================================================
+
+  JBoss Bootstrap Environment
+
+  JBOSS_HOME: /opt/jboss/wildfly
+
+  JAVA: /usr/lib/jvm/java/bin/java
+
+  JAVA_OPTS:  -server -Xms1024m -Xmx2048m  -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=512m  -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true  -Djboss.as.management.blocking.timeout=900  
+
+=========================================================================
+
+Failed to read or configure the org.jboss.logmanager.LogManager
+java.lang.IllegalArgumentException: Failed to instantiate class "org.jboss.logmanager.handlers.PeriodicRotatingFileHandler" for handler "FILE"
+	at org.jboss.logmanager.config.AbstractPropertyConfiguration$ConstructAction.lambda$validate$2(AbstractPropertyConfiguration.java:122)
+	at org.jboss.logmanager.config.WrappedAction.execute(WrappedAction.java:42)
+	at org.jboss.logmanager.config.AbstractPropertyConfiguration$ConstructAction.validate(AbstractPropertyConfiguration.java:118)
+	at org.jboss.logmanager.config.LogContextConfigurationImpl.doPrepare(LogContextConfigurationImpl.java:336)
+	at org.jboss.logmanager.config.LogContextConfigurationImpl.prepare(LogContextConfigurationImpl.java:289)
+	at org.jboss.logmanager.config.LogContextConfigurationImpl.commit(LogContextConfigurationImpl.java:298)
+	at org.jboss.logmanager.PropertyConfigurator.configure(PropertyConfigurator.java:546)
+	at org.jboss.logmanager.PropertyConfigurator.configure(PropertyConfigurator.java:97)
+	at org.jboss.logmanager.LogManager.readConfiguration(LogManager.java:170)
+	at org.jboss.logmanager.LogManager.readConfiguration(LogManager.java:132)
+	at java.util.logging.LogManager$3.run(LogManager.java:399)
+	at java.util.logging.LogManager$3.run(LogManager.java:396)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.readPrimordialConfiguration(LogManager.java:396)
+	at java.util.logging.LogManager.access$800(LogManager.java:145)
+	at java.util.logging.LogManager$2.run(LogManager.java:345)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.LogManager.ensureLogManagerInitialized(LogManager.java:338)
+	at java.util.logging.LogManager.getLogManager(LogManager.java:378)
+	at org.jboss.modules.Main.main(Main.java:444)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.jboss.logmanager.config.AbstractPropertyConfiguration$ConstructAction.lambda$validate$2(AbstractPropertyConfiguration.java:120)
+	... 19 more
+Caused by: java.io.FileNotFoundException: /opt/wildfly-26.1.3.Final/standalone/log/server.log (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at org.jboss.logmanager.handlers.FileHandler.setFile(FileHandler.java:151)
+	at org.jboss.logmanager.handlers.PeriodicRotatingFileHandler.setFile(PeriodicRotatingFileHandler.java:109)
+	at org.jboss.logmanager.handlers.FileHandler.setFileName(FileHandler.java:189)
+	at org.jboss.logmanager.handlers.FileHandler.<init>(FileHandler.java:119)
+	at org.jboss.logmanager.handlers.PeriodicRotatingFileHandler.<init>(PeriodicRotatingFileHandler.java:77)
+	... 24 more
+[0m09:04:57,306 INFO  [org.jboss.as.ejb3] (MSC service thread 1-2) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+[0m[0m09:04:57,703 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0006: Undertow HTTPS listener https listening on 0.0.0.0:8443
+[0m[0m09:04:57,897 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) WFLYDS0013: Started FileSystemDeploymentService for directory /opt/jboss/wildfly/standalone/deployments
+[0m[0m09:04:58,005 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "egov-ear-3.0.2-COE-SNAPSHOT.ear" (runtime-name: "egov-ear-3.0.2-COE-SNAPSHOT.ear")
+[0m[0m09:04:58,494 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-2) WFLYMSGAMQ0075: AIO wasn't located on this platform, it will fall back to using pure Java NIO. Your platform is Linux, install LibAIO to enable the AIO journal and achieve optimal performance.
+[0m[0m09:04:59,804 INFO  [org.jboss.ws.common.management] (MSC service thread 1-2) JBWS022052: Starting JBossWS 5.5.0.Final (Apache CXF 3.4.10) 
+[0m[0m09:05:00,503 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=true,journalDirectory=/opt/jboss/wildfly/standalone/data/activemq/journal,bindingsDirectory=/opt/jboss/wildfly/standalone/data/activemq/bindings,largeMessagesDirectory=/opt/jboss/wildfly/standalone/data/activemq/largemessages,pagingDirectory=/opt/jboss/wildfly/standalone/data/activemq/paging)
+[0m[0m09:05:01,202 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0001: Bound data source [java:/READWRITE_DS]
+[0m[0m09:05:01,202 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0001: Bound data source [java:/QUARTZ_NO_TXN_DS]
+[0m[0m09:05:01,307 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221013: Using NIO Journal
+[0m[0m09:05:01,708 INFO  [org.jboss.vfs] (MSC service thread 1-1) VFS000002: Failed to clean existing content for temp file provider of type deployment. Enable DEBUG level log to find what caused this
+[0m[0m09:05:04,096 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+[0m[0m09:05:04,106 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+[0m[0m09:05:04,194 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+[0m[0m09:05:04,196 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+[0m[0m09:05:05,595 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221034: Waiting indefinitely to obtain live lock
+[0m[0m09:05:05,596 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221035: Live Server Obtained live lock
+[0m[0m09:05:11,198 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.ExpiryQueue on address jms.queue.ExpiryQueue
+[0m[0m09:05:11,210 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.DLQ on address jms.queue.DLQ
+[0m[0m09:05:11,210 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.EmailMessageQueue on address jms.queue.EmailMessageQueue
+[0m[0m09:05:11,294 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.SMSMessageQueue on address jms.queue.SMSMessageQueue
+[0m[0m09:05:11,297 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221003: Deploying ANYCAST queue jms.queue.FlashMessageQueue on address jms.queue.FlashMessageQueue
+[0m[0m09:05:11,497 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-2) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor acceptor
+[0m[0m09:05:11,499 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-2) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor acceptor
+[0m[0m09:05:11,501 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-2) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor-throughput acceptor
+[0m[0m09:05:11,502 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-2) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor-throughput acceptor
+[0m[0m09:05:13,401 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221007: Server is now live
+[0m[0m09:05:13,402 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 79) AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.19.1 [default, nodeID=f472a73e-ce77-11f0-88b9-fc777421d5a9] 
+[0m[33m09:05:13,597 WARN  [org.apache.activemq.artemis.jms.server] (ServerService Thread Pool -- 82) AMQ122005: Invalid "host" value "0.0.0.0" detected for "http-connector" connector. Switching to "egov-finance-74697f6ffd-txlbv". If this new address is incorrect please manually configure the connector to use the proper one.
+[0m[0m09:05:13,796 INFO  [org.wildfly.extension.messaging-activemq] (ServerService Thread Pool -- 82) WFLYMSGAMQ0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+[0m[0m09:05:13,996 INFO  [org.wildfly.extension.messaging-activemq] (ServerService Thread Pool -- 82) WFLYMSGAMQ0002: Bound messaging object to jndi name java:/ConnectionFactory
+[0m[0m09:05:14,412 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-2) WFLYJCA0007: Registered connection factory java:/JmsXA
+[0m[0m09:05:14,996 INFO  [org.apache.activemq.artemis.ra.ActiveMQRALogger] (MSC service thread 1-2) AMQ151007: Resource adaptor started
+[0m[0m09:05:14,998 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-2) IJ020002: Deployed: file://RaActivatoractivemq-ra
+[0m[0m09:05:15,008 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-2) WFLYJCA0002: Bound Jakarta Connectors ConnectionFactory [java:/JmsXA]
+[0m[0m09:05:15,010 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-2) WFLYJCA0118: Binding connection factory named java:/JmsXA to alias java:jboss/DefaultJMSConnectionFactory
+[0m[33m09:06:21,499 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,500 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,502 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jdom-1.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,503 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-beanutils-1.7.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,505 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-logging-1.1.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,505 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry velocity-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,505 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry velocity-dep-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,898 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,899 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,899 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jdom-1.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,905 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-beanutils-1.7.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:21,905 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-logging-1.1.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-main-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,203 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-referencing-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,297 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-api-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,297 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-api-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,401 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-pool-1.3.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,401 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jts-1.9.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,401 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry jdom-1.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,402 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-beanutils-1.7.0.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,402 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry commons-logging-1.1.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,402 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry velocity-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,402 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry velocity-dep-1.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,403 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry gt-render-2.5.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,403 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry gt-coverage-2.5.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,403 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry gt-cql-2.5.4.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,404 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry batik-transcoder-1.6.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,404 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry batik-util-1.6.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,404 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry xercesImpl-2.7.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[33m09:06:22,405 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0059: Class Path entry xml-apis-xerces-2.7.1.jar in /content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/gt-shapefile-renderer-2.5.4.jar  does not point to a valid jar for a Class-Path reference.
+[0m[0m09:06:22,498 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-commonsweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m09:06:22,499 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-collectionweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m09:06:22,499 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-eisweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m09:06:22,500 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-egfweb-3.0.2-COE-SNAPSHOT.war")
+[0m[0m09:06:22,500 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0207: Starting subdeployment (runtime-name: "egov-egiweb-3.0.2-COE-SNAPSHOT.war")
+[0m[33m09:06:35,398 WARN  [org.jboss.as.dependency.deprecated] (MSC service thread 1-2) WFLYSRV0221: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a deprecated module ("org.apache.log4j") which may be removed in future versions without notice.
+[0m[33m09:06:35,399 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.javassist") which may be changed or removed in future versions without notice.
+[0m[33m09:06:35,403 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.jaxen") which may be changed or removed in future versions without notice.
+[0m[33m09:06:35,409 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.bouncycastle") which may be changed or removed in future versions without notice.
+[0m[33m09:06:35,495 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-2) WFLYSRV0018: Deployment "deployment.egov-ear-3.0.2-COE-SNAPSHOT.ear" is using a private module ("org.jboss.as.clustering.infinispan") which may be changed or removed in future versions without notice.
+[0m[33m09:06:52,600 WARN  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0013: Deployment egov-ear-3.0.2-COE-SNAPSHOT.ear contains Jakarta Contexts and Dependency Injection annotations but no bean archive was found (no beans.xml or class with bean defining annotations was present).
+[0m[0m09:06:55,008 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 84) ISPN000128: Infinispan version: Infinispan 'Triskaidekaphobia' 13.0.10.Final
+[0m[0m09:06:57,101 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 84) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+[0m[0m09:06:57,905 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 85) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.marshalling.jboss.JBossMarshaller'
+[0m[0m09:06:58,209 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 86) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+[0m[0m09:07:02,101 INFO  [org.infinispan.CONFIG] (MSC service thread 1-1) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m09:07:02,105 INFO  [org.infinispan.CONFIG] (MSC service thread 1-2) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m09:07:02,105 INFO  [org.infinispan.CONFIG] (MSC service thread 1-1) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m09:07:02,108 INFO  [org.infinispan.CONFIG] (MSC service thread 1-2) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+[0m[0m09:07:02,296 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 85) ISPN000025: wakeUpInterval is <= 0, not starting expired purge thread
+[0m[0m09:07:02,301 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 85) WFLYCLINF0002: Started http-remoting-connector cache from ejb container
+[0m[0m09:07:03,595 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 84) ISPN000025: wakeUpInterval is <= 0, not starting expired purge thread
+[0m[0m09:07:03,604 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 84) WFLYCLINF0002: Started egov-ear-3.0.2-COE-SNAPSHOT.ear cache from web container
+[0m[0m09:07:04,707 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 84) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m09:07:04,795 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 106) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m09:07:04,794 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 105) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m09:07:04,794 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 95) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m09:07:04,806 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 107) No Spring WebApplicationInitializer types detected on classpath
+[0m[0m09:07:05,008 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 95) Initializing Spring root WebApplicationContext
+[0m[0m09:07:05,009 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 95) Root WebApplicationContext: initialization started
+[0m[0m09:07:05,098 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 106) Initializing Spring root WebApplicationContext
+[0m[0m09:07:05,099 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 107) Initializing Spring root WebApplicationContext
+[0m[0m09:07:05,100 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 105) Initializing Spring root WebApplicationContext
+[0m[0m09:07:05,101 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 105) Root WebApplicationContext: initialization started
+[0m[0m09:07:05,099 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 106) Root WebApplicationContext: initialization started
+[0m[0m09:07:05,099 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 107) Root WebApplicationContext: initialization started
+[0m[0m09:07:05,194 INFO  [io.undertow.servlet] (ServerService Thread Pool -- 84) Initializing Spring root WebApplicationContext
+[0m[0m09:07:05,195 INFO  [org.springframework.web.context.ContextLoader] (ServerService Thread Pool -- 84) Root WebApplicationContext: initialization started
+[0m[0m09:07:05,607 INFO  [org.springframework.context.support.ClassPathXmlApplicationContext] (ServerService Thread Pool -- 107) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b1c422f: startup date [Sat Dec 13 09:07:05 UTC 2025]; root of context hierarchy
+[0m[0m09:07:06,101 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from URL [vfs:/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-config-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-erp.xml]
+[0m[0m09:07:08,906 INFO  [org.springframework.context.support.ClassPathXmlApplicationContext] (ServerService Thread Pool -- 107) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@37179a25: startup date [Sat Dec 13 09:07:08 UTC 2025]; root of context hierarchy
+[0m[0m09:07:08,906 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from URL [vfs:/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-config-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-security.xml]
+[0m[0m09:07:10,101 INFO  [org.springframework.security.core.SpringSecurityCoreVersion] (ServerService Thread Pool -- 107) You are running with Spring Security Core 4.2.3.RELEASE
+[0m[0m09:07:10,104 INFO  [org.springframework.security.config.SecurityNamespaceHandler] (ServerService Thread Pool -- 107) Spring Security 'config' module version is 4.2.3.RELEASE
+[0m[0m09:07:10,708 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egi-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-infra-services.xml"]
+[0m[0m09:07:13,697 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-commons-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-commons-services.xml"]
+[0m[0m09:07:14,203 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egf-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-fin-services.xml"]
+[0m[0m09:07:16,007 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] (ServerService Thread Pool -- 107) Overriding bean definition for bean 'budgetDetailService' with a different definition: replacing [Generic bean: class [org.egov.services.budget.BudgetDetailService]; scope=singleton; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egf-3.0.2-COE-SNAPSHOT.jar/org/egov/services/budget/BudgetDetailService.class"]] with [Generic bean: class [org.egov.services.budget.BudgetDetailService]; scope=; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-egf-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-fin-services.xml"]]
+[0m[0m09:07:16,102 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-collection-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-collection-services.xml"]
+[0m[0m09:07:16,907 INFO  [org.springframework.beans.factory.support.DefaultListableBeanFactory] (ServerService Thread Pool -- 107) Overriding bean definition for bean 'collectionService' with a different definition: replacing [Generic bean: class [org.egov.collection.service.CollectionService]; scope=singleton; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-collection-3.0.2-COE-SNAPSHOT.jar/org/egov/collection/service/CollectionService.class"]] with [Generic bean: class [org.egov.collection.service.CollectionService]; scope=; abstract=false; lazyInit=true; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-collection-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-collection-services.xml"]]
+[0m[0m09:07:16,997 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] (ServerService Thread Pool -- 107) Loading XML bean definitions from VFS resource ["/content/egov-ear-3.0.2-COE-SNAPSHOT.ear/lib/egov-eis-3.0.2-COE-SNAPSHOT.jar/config/spring/applicationContext-eis-services.xml"]
