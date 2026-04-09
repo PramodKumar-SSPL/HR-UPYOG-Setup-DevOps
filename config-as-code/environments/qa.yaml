@@ -1,7 +1,7 @@
 global:
   domain: dev-hrupyog.sparrowsoftech.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
   setup: fullsetup
-  containerRegistry: hrupyog
+  #containerRegistry: hrupyog
 
 cluster-configs:
   namespaces:
@@ -717,14 +717,14 @@ kafka-v2:
   #        zone: ap-south-1b ## REPLACE: add zone
 
   ## Zookeeper JVM Heap Option
-heapOptions: "-Xms192M -Xmx192M" # ~50% of 384Mi
-resources:
-  limits:
-    cpu: 300m
-    memory: 384Mi
-  requests:
-    cpu: 300m
-    memory: 384Mi
+# heapOptions: "-Xms192M -Xmx192M" # ~50% of 384Mi
+# resources:
+#   limits:
+#     cpu: 300m
+#     memory: 384Mi
+#   requests:
+#     cpu: 300m
+#     memory: 384Mi
 
 # es-v1-cluster AWS >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 elasticsearch-data-v1:
@@ -785,7 +785,7 @@ es-curator:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 # eGov-finance Tenants
 financeTenants: |
-  tenant.citya-dev-hrupyog.sparrowsoftech.in=citya
+  #tenant.citya-dev-hrupyog.sparrowsoftech.in=citya
   tenant.panchkula-dev-hrupyog.sparrowsoftech.in=panchkula
   tenant.thanesar-dev-hrupyog.sparrowsoftech.in=thanesar
   tenant.kundli-dev-hrupyog.sparrowsoftech.in=kundli
@@ -798,8 +798,83 @@ financeTenants: |
   tenant.pataudi-dev-hrupyog.sparrowsoftech.in=pataudi
   tenant.palwal-dev-hrupyog.sparrowsoftech.in=palwal
   tenant.hathin-dev-hrupyog.sparrowsoftech.in=hathin
-  
   tenant.gurugram-dev-hrupyog.sparrowsoftech.in=gurugram
+  tenant.ambala-dev-hrupyog.sparrowsoftech.in=ambala
+  tenant.ambalasadar-dev-hrupyog.sparrowsoftech.in=ambalasadar
+  tenant.barara-dev-hrupyog.sparrowsoftech.in=barara
+  tenant.naraingarh-dev-hrupyog.sparrowsoftech.in=naraingarh
+  tenant.bawanikhera-dev-hrupyog.sparrowsoftech.in=bawanikhera
+  tenant.bhiwani-dev-hrupyog.sparrowsoftech.in=bhiwani
+  tenant.loharu-dev-hrupyog.sparrowsoftech.in=loharu
+  tenant.siwani-dev-hrupyog.sparrowsoftech.in=siwani
+  tenant.charkhidadri-dev-hrupyog.sparrowsoftech.in=charkhidadri
+  tenant.faridabad-dev-hrupyog.sparrowsoftech.in=faridabad 
+  tenant.bhuna-dev-hrupyog.sparrowsoftech.in=bhuna
+  tenant.fatehabad-dev-hrupyog.sparrowsoftech.in=fatehabad
+  tenant.jakhal-dev-hrupyog.sparrowsoftech.in=jakhal
+  tenant.tohana-dev-hrupyog.sparrowsoftech.in=tohana
+  tenant.manesar-dev-hrupyog.sparrowsoftech.in=manesar
+  tenant.barwala-dev-hrupyog.sparrowsoftech.in=barwala
+  tenant.hisar-dev-hrupyog.sparrowsoftech.in=hisar
+  tenant.uklana-dev-hrupyog.sparrowsoftech.in=uklana
+  tenant.hansi-dev-hrupyog.sparrowsoftech.in=hansi
+  tenant.narnaund-dev-hrupyog.sparrowsoftech.in=narnaund  
+
+  tenant.bahadurgarh-dev-hrupyog.sparrowsoftech.in=bahadurgarh
+  tenant.beri-dev-hrupyog.sparrowsoftech.in=beri
+  tenant.jhajjar-dev-hrupyog.sparrowsoftech.in=jhajjar
+  tenant.jind-dev-hrupyog.sparrowsoftech.in=jind
+  tenant.julana-dev-hrupyog.sparrowsoftech.in=julana
+  tenant.narwana-dev-hrupyog.sparrowsoftech.in=narwana
+  tenant.safidon-dev-hrupyog.sparrowsoftech.in=safidon
+  tenant.uchana-dev-hrupyog.sparrowsoftech.in=uchana
+  tenant.cheeka-dev-hrupyog.sparrowsoftech.in=cheeka
+  tenant.kaithal-dev-hrupyog.sparrowsoftech.in=kaithal
+  tenant.kalayat-dev-hrupyog.sparrowsoftech.in=kalayat
+  tenant.pundri-dev-hrupyog.sparrowsoftech.in=pundri
+  tenant.rajaund-dev-hrupyog.sparrowsoftech.in=rajaund
+  tenant.siwan-dev-hrupyog.sparrowsoftech.in=siwan
+  tenant.assandh-dev-hrupyog.sparrowsoftech.in=assandh
+  tenant.gharaunda-dev-hrupyog.sparrowsoftech.in=gharaunda
+  tenant.indri-dev-hrupyog.sparrowsoftech.in=indri
+  tenant.karnal-dev-hrupyog.sparrowsoftech.in=karnal
+  tenant.nilokheri-dev-hrupyog.sparrowsoftech.in=nilokheri
+  tenant.nissing-dev-hrupyog.sparrowsoftech.in=nissing
+  tenant.taraori-dev-hrupyog.sparrowsoftech.in=taraori
+  tenant.ismailabad-dev-hrupyog.sparrowsoftech.in=ismailabad
+  tenant.ladwa-dev-hrupyog.sparrowsoftech.in=ladwa
+  tenant.pehowa-dev-hrupyog.sparrowsoftech.in=pehowa
+  tenant.shahabad-dev-hrupyog.sparrowsoftech.in=shahabad
+  tenant.atelimandi-dev-hrupyog.sparrowsoftech.in=atelimandi
+  tenant.kanina-dev-hrupyog.sparrowsoftech.in=kanina
+  tenant.mahendergarh-dev-hrupyog.sparrowsoftech.in=mahendergarh
+  tenant.nangalchaudhary-dev-hrupyog.sparrowsoftech.in=nangalchaudhary
+  tenant.narnaul-dev-hrupyog.sparrowsoftech.in=narnaul
+  tenant.firozpurzhirka-dev-hrupyog.sparrowsoftech.in=firozpurzhirka
+  tenant.nuh-dev-hrupyog.sparrowsoftech.in=nuh
+  tenant.punhana-dev-hrupyog.sparrowsoftech.in=punhana
+  tenant.tauru-dev-hrupyog.sparrowsoftech.in=tauru
+  tenant.kalka-dev-hrupyog.sparrowsoftech.in=kalka
+  tenant.panipat-dev-hrupyog.sparrowsoftech.in=panipat
+  tenant.hodal-dev-hrupyog.sparrowsoftech.in=hodal
+  tenant.bawal-dev-hrupyog.sparrowsoftech.in=bawal
+  tenant.dharuhera-dev-hrupyog.sparrowsoftech.in=dharuhera
+  #tenant.rewari-dev-hrupyog.sparrowsoftech.in=rewari
+  tenant.kalanaur-dev-hrupyog.sparrowsoftech.in=kalanaur
+  tenant.meham-dev-hrupyog.sparrowsoftech.in=meham
+  tenant.rohtak-dev-hrupyog.sparrowsoftech.in=rohtak
+  tenant.gannaur-dev-hrupyog.sparrowsoftech.in=gannaur
+  tenant.gohana-dev-hrupyog.sparrowsoftech.in=gohana
+  tenant.kharkhoda-dev-hrupyog.sparrowsoftech.in=kharkhoda
+  tenant.sonepat-dev-hrupyog.sparrowsoftech.in=sonepat
+  tenant.ellenabad-dev-hrupyog.sparrowsoftech.in=ellenabad
+  tenant.kalanwali-dev-hrupyog.sparrowsoftech.in=kalanwali
+  tenant.mandidabwali-dev-hrupyog.sparrowsoftech.in=mandidabwali
+  tenant.rania-dev-hrupyog.sparrowsoftech.in=rania
+  tenant.sirsa-dev-hrupyog.sparrowsoftech.in=sirsa
+  tenant.radaur-dev-hrupyog.sparrowsoftech.in=radaur
+  tenant.sadhaura-dev-hrupyog.sparrowsoftech.in=sadhaura
+  tenant.yamunanagar-dev-hrupyog.sparrowsoftech.in=yamunanagar
   #tenant.cityd-dev-hrupyog.sparrowsoftech.in=cityd
   #tenant.dev-hrupyog.sparrowsoftech.in=state
   location.user.role=Collection Operator

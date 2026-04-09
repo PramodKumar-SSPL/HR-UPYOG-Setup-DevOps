@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare name/value pairs to be passed into your templates.
 global:
-    containerRegistry: egovio
+    containerRegistry: hrupyog
 
 namespace: egov
 replicas: 1
@@ -109,7 +109,7 @@ lifecycle:
             - -c
             - "sleep 10"
 
-memory_limits: "256Mi"
+memory_limits: "384Mi"
 resources: |
   {{- if eq .Values.appType "java-spring" -}}
   requests:
