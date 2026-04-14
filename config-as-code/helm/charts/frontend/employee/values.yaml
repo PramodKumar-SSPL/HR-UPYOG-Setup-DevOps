@@ -38,3 +38,8 @@ extraVolumeMounts: |
     subPath: sub_filter.conf
 
 namespace: egov    
+resources:
+  requests:
+    memory: "256Mi"
+  limits:
+    memory: "512Mi"
